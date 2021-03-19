@@ -1,15 +1,18 @@
-#pragma once
-
 #include <iostream>
 #include <chrono>
 
 using namespace std;
 using namespace std::chrono;
 
-double diffclock( high_resolution_clock::time_point t2, high_resolution_clock::time_point t1)
-{
-    duration<double, std::milli> time_span = t2 - t1;
-    return time_span.count();
+// double diffclock( high_resolution_clock::time_point t2, high_resolution_clock::time_point t1)
+// {
+//     duration<double, std::milli> time_span = t2 - t1;
+//     return time_span.count();
+// }
+
+long diffclock(system_clock::time_point c1,system_clock::time_point c2){
+  milliseconds ms = duration_cast< milliseconds >(c1-c2);
+  return ms.count();
 }
 
 void setcolor(int foreground, int background=0) {
